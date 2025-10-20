@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block title %} SGE - Detalhes da Categoria {% endblock %}
+
+{% block content %}
+
+    <div class="container mt-4">
+        <h3 class="display-6">Detalhes da Categoria</h3>
+
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">{{ category.name }}</h3>
+            </div>
+            <div class="card-body">
+                <p class="card-text"><strong>{{ category.description }}</strong></p>
+                <p class="card-text"><strong>Criado em:</strong> {{ category.created_at }}</p>
+                <p class="card-text"><strong>Atualizado em:</strong> {{ category.updated_at }}</p>
+                <div class="card-footer">
+                    <a href="{% url 'category_update' category.id %}" class="btn btn-warning">
+                        <i class="bi bi-pencil"> </i> Editar
+                    </a>
+                    <a href="{% url 'category_delete' category.id %}" class="btn btn-danger">
+                        <i class="bi bi-trash"></i> Excluir
+                    </a>
+                    <a href="{% url 'category_list' %}" class="btn btn-secondary">
+                        <i class="bi bi-arrow-left"></i> Voltar
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+{% endblock %}
