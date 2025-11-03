@@ -9,23 +9,23 @@
 
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">{{ product.title }}</h3>
+                <h3 class="card-title">{{ object.title }}</h3>
             </div>
             <div class="card-body">
-                <p class="card-text"><strong>{{ product.brand }}</strong></p>
-                <p class="card-text"><strong>{{ product.category }}</strong></p>
-                <p class="card-text"><strong>{{ product.description }}</strong></p>
-                <p class="card-text"><strong>Número de Série:</strong> {{ product.serial_number }}</p>
-                <p class="card-text"><strong>Preço de Custo:</strong> R$ {{ product.cost_price }}</p>
-                <p class="card-text"><strong>Preço de Venda:</strong> R$ {{ product.sell_price }}</p>
-                <p class="card-text"><strong>Quantidade:</strong> {{ product.quantity }}</p>
-                <p class="card-text"><strong>Criado em:</strong> {{ product.created_at }}</p>
-                <p class="card-text"><strong>Atualizado em:</strong> {{ product.updated_at }}</p>
+                <p class="card-text"><strong>{{ object.brand }}</strong></p>
+                <p class="card-text"><strong>{{ object.category }}</strong></p>
+                <p class="card-text"><strong>{{ object.description }}</strong></p>
+                <p class="card-text"><strong>Número de Série:</strong> {{ object.serial_number }}</p>
+                <p class="card-text"><strong>Preço de Custo:</strong> R$ {{ object.cost_price }}</p>
+                <p class="card-text"><strong>Preço de Venda:</strong> R$ {{ object.sell_price }}</p>
+                <p class="card-text"><strong>Quantidade:</strong> {{ object.quantity }}</p>
+                <p class="card-text"><strong>Criado em:</strong> {{ object.created_at }}</p>
+                <p class="card-text"><strong>Atualizado em:</strong> {{ object.updated_at }}</p>
                 <div class="card-footer">
-                    <a href="{% url 'product_update' product.id %}" class="btn btn-warning">
+                    <a href="{% url 'product_update' object.id %}" class="btn btn-warning">
                         <i class="bi bi-pencil"> </i> Editar
                     </a>
-                    <a href="{% url 'product_delete' product.id %}" class="btn btn-danger">
+                    <a href="{% url 'product_delete' object.id %}" class="btn btn-danger">
                         <i class="bi bi-trash"></i> Excluir
                     </a>
                     <a href="{% url 'product_list' %}" class="btn btn-secondary">

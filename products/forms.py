@@ -12,7 +12,6 @@ class ProductForm(forms.ModelForm):
             'category',
             'description',
             'serial_number',
-            'quantity',
             'cost_price',
             'sell_price',
         ]
@@ -22,7 +21,6 @@ class ProductForm(forms.ModelForm):
             'category': forms.Select(attrs={'class': 'form-control'}),
             'description': forms.Textarea(attrs={'class': 'form-control'}),
             'serial_number': forms.TextInput(attrs={'class': 'form-control'}),
-            'quantity': forms.NumberInput(attrs={'class': 'form-control'}),
             'cost_price': forms.NumberInput(attrs={'class': 'form-control'}),
             'sell_price': forms.NumberInput(attrs={'class': 'form-control'}),
         }
@@ -32,7 +30,6 @@ class ProductForm(forms.ModelForm):
             'category': 'Categoria',
             'description': 'Descrição',
             'serial_number': 'Número de Série',
-            'quantity': 'Quantidade',
             'cost_price': 'Preço de Custo',
             'sell_price': 'Preço de Venda',
 
@@ -52,9 +49,6 @@ class ProductForm(forms.ModelForm):
             },
             'serial_number': {
                 'required': 'O número de série é obrigatório',
-            },
-            'quantity': {
-                'required': 'A quantidade é obrigatória',
             },
             'cost_price': {
                 'required': 'O preço de custo é obrigatório',

@@ -1,26 +1,26 @@
 {% extends 'base.html' %}
 
-{% block title %} SGE - Produtos {% endblock %}
+{% block title %} SGE - Saídas de Produtos {% endblock %}
 
 {% block content %}
 
 <div class="md-4">
-    <h1>Lista de Produtos</h1>
+    <h1>Lista de Saídas de Produtos</h1>
 </div>
 
 <div class="row mb-3">
     <div class="col-md-6">
-        <a href="{% url 'product_create' %}" class="btn btn-success float-start">
-            <i class="bi bi-plus-lg"></i> Novo Produto
+        <a href="{% url 'outflow_create' %}" class="btn btn-success float-start">
+            <i class="bi bi-plus-lg"></i> Nova Saída
         </a>
     </div>
 </div>
 
 <div class="row mb-3">
     <div class="col-md-6">
-        <form method="get" action="{% url 'product_list' %}">
+        <form method="get" action="{% url 'outflow_list' %}">
             <div class="input-group">
-                <input type="text" class="form-control" name="title" placeholder="Buscar por título" value="{{ request.GET.title }}">
+                <input type="text" class="form-control" name="product" placeholder="Buscar por produto" value="{{ request.GET.product }}">
                 <input type="text" class="form-control" name="serial_number" placeholder="Buscar por número de série" value="{{ request.GET.serial_number }}">
                 <button type="submit" class="btn btn-primary">
                     <i class="bi bi-search"></i>
@@ -30,7 +30,7 @@
     </div>
 
     <div class="col-md-6">
-        <form method="get" action="{% url 'product_list' %}">
+        <form method="get" action="{% url 'outflow_list' %}">
             <div class="input-group">
                 <select class="form-select" name="category" onchange="this.form.submit()">
                     <option value="">Filtrar por categoria</option>
@@ -63,10 +63,7 @@
             <thead class="thead-dark">
                 <tr>
                     <th>ID</th>
-                    <th>Título</th>
-                    <th>Marca</th>
-                    <th>Categoria</th>
-                    <th>N° de Série</th>
+                    <th>Produto</th>
                     <th>Quantidade</th>
                     <th>Criado em</th>
                     <th>Atualizado em</th>
@@ -74,31 +71,22 @@
                 </tr>
             </thead>
             <tbody>
-                {% for product in products %}
+                {% for outflow in outflows %}
                     <tr>
-                        <td>{{ product.id }}</td>
-                        <td>{{ product.title }}</td>
-                        <td>{{ product.brand }}</td>
-                        <td>{{ product.category }}</td>
-                        <td>{{ product.serial_number }}</td>
-                        <td>{{ product.quantity }}</td>
-                        <td>{{ product.created_at|date:"d/m/Y H:i" }}</td>
-                        <td>{{ product.updated_at|date:"d/m/Y H:i" }}</td>
+                        <td>{{ outflow.id }}</td>
+                        <td>{{ outflow.product.title }}</td>
+                        <td>{{ outflow.quantity }}</td>
+                        <td>{{ outflow.created_at|date:"d/m/Y H:i" }}</td>
+                        <td>{{ outflow.updated_at|date:"d/m/Y H:i" }}</td>
                         <td align="center">
-                            <a href="{% url 'product_detail' product.id %}" class="btn btn-info btn-sm">
+                            <a href="{% url 'outflow_detail' outflow.id %}" class="btn btn-info btn-sm">
                                 <i class="bi bi-eye"></i>
-                            </a>
-                            <a href="{% url 'product_update' product.id %}" class="btn btn-warning btn-sm">
-                                <i class="bi bi-pencil"></i>
-                            </a>
-                            <a href="{% url 'product_delete' product.id %}" class="btn btn-danger btn-sm">
-                                <i class="bi bi-trash"></i>
                             </a>
                         </td>
                     </tr>
                 {% empty %}
                     <tr>
-                        <td colspan="10">Nenhum produto cadastrado.</td>
+                        <td colspan="10">Nenhuma saída cadastrada.</td>
                     </tr>
                 {% endfor %}
             </tbody>

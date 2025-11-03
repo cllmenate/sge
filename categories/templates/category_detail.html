@@ -9,17 +9,17 @@
 
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">{{ category.name }}</h3>
+                <h3 class="card-title">{{ object.name }}</h3>
             </div>
             <div class="card-body">
-                <p class="card-text"><strong>{{ category.description }}</strong></p>
-                <p class="card-text"><strong>Criado em:</strong> {{ category.created_at }}</p>
-                <p class="card-text"><strong>Atualizado em:</strong> {{ category.updated_at }}</p>
+                <p class="card-text"><strong>{{ object.description }}</strong></p>
+                <p class="card-text"><strong>Criado em:</strong> {{ object.created_at }}</p>
+                <p class="card-text"><strong>Atualizado em:</strong> {{ object.updated_at }}</p>
                 <div class="card-footer">
-                    <a href="{% url 'category_update' category.id %}" class="btn btn-warning">
+                    <a href="{% url 'category_update' object.id %}" class="btn btn-warning">
                         <i class="bi bi-pencil"> </i> Editar
                     </a>
-                    <a href="{% url 'category_delete' category.id %}" class="btn btn-danger">
+                    <a href="{% url 'category_delete' object.id %}" class="btn btn-danger">
                         <i class="bi bi-trash"></i> Excluir
                     </a>
                     <a href="{% url 'category_list' %}" class="btn btn-secondary">
