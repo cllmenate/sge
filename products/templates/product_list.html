@@ -8,6 +8,10 @@
     <h1>Lista de Produtos</h1>
 </div>
 
+    {% include 'components/_product_metrics.html' %}
+
+<div class="mb-3"></div>
+
 <div class="row mb-3">
     <div class="col-md-6">
         <a href="{% url 'product_create' %}" class="btn btn-success float-start">
@@ -64,9 +68,9 @@
                 <tr>
                     <th>ID</th>
                     <th>Título</th>
-                    <th>Marca</th>
-                    <th>Categoria</th>
                     <th>N° de Série</th>
+                    <th>Preço de Custo</th>
+                    <th>Preço de Venda</th>
                     <th>Quantidade</th>
                     <th>Criado em</th>
                     <th>Atualizado em</th>
@@ -78,9 +82,9 @@
                     <tr>
                         <td>{{ product.id }}</td>
                         <td>{{ product.title }}</td>
-                        <td>{{ product.brand }}</td>
-                        <td>{{ product.category }}</td>
                         <td>{{ product.serial_number }}</td>
+                        <td>{{ product.cost_price }}</td>
+                        <td>{{ product.sell_price }}</td>
                         <td>{{ product.quantity }}</td>
                         <td>{{ product.created_at|date:"d/m/Y H:i" }}</td>
                         <td>{{ product.updated_at|date:"d/m/Y H:i" }}</td>

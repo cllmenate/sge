@@ -5,6 +5,7 @@ from django.views.generic import (
 )
 from django.urls import reverse_lazy
 from outflows import models, forms
+from app import metrics
 
 
 # Create your views here.
@@ -33,6 +34,12 @@ class OutflowListView(ListView):
             queryset = queryset.filter(product__brand__id=brand)
 
         return queryset
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['sales_metrics'] = metrics.get_sales_metrics()
+
+        return context
 
 
 class OutflowCreateView(CreateView):
