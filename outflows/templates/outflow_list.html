@@ -8,17 +8,21 @@
     <h1>Lista de Saídas de Produtos</h1>
 </div>
 
-    {% include 'components/_sales_metrics.html' %}
+    {% if perms.products.view_product and perms.outflows.view_outflow %}
+        {% include 'components/_sales_metrics.html' %}
+    {% endif %}
 
 <div class="mb-3"></div>
 
-<div class="row mb-3">
-    <div class="col-md-6">
-        <a href="{% url 'outflow_create' %}" class="btn btn-success float-start">
-            <i class="bi bi-plus-lg"></i> Nova Saída
-        </a>
+{% if perms.outflows.add_outflow %}
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <a href="{% url 'outflow_create' %}" class="btn btn-success float-start">
+                <i class="bi bi-plus-lg"></i> Nova Saída
+            </a>
+        </div>
     </div>
-</div>
+{% endif %}
 
 <div class="row mb-3">
     <div class="col-md-6">
@@ -82,11 +86,13 @@
                         <td>{{ outflow.quantity }}</td>
                         <td>{{ outflow.created_at|date:"d/m/Y H:i" }}</td>
                         <td>{{ outflow.updated_at|date:"d/m/Y H:i" }}</td>
-                        <td align="center">
-                            <a href="{% url 'outflow_detail' outflow.id %}" class="btn btn-info btn-sm">
-                                <i class="bi bi-eye"></i>
-                            </a>
-                        </td>
+                        {% if perms.outflows.view_outflow %}
+                            <td align="center">
+                                <a href="{% url 'outflow_detail' outflow.id %}" class="btn btn-info btn-sm">
+                                    <i class="bi bi-eye"></i>
+                                </a>
+                            </td>
+                        {% endif %}
                     </tr>
                 {% empty %}
                     <tr>

@@ -8,13 +8,15 @@
     <h1>Lista de Entradas de Produtos</h1>
 </div>
 
-<div class="row mb-3">
-    <div class="col-md-6">
-        <a href="{% url 'inflow_create' %}" class="btn btn-success float-start">
-            <i class="bi bi-plus-lg"></i> Nova Entrada
-        </a>
+{% if perms.inflows.add_inflow %}
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <a href="{% url 'inflow_create' %}" class="btn btn-success float-start">
+                <i class="bi bi-plus-lg"></i> Nova Entrada
+            </a>
+        </div>
     </div>
-</div>
+{% endif %}
 
 <div class="row mb-3">
     <div class="col-md-6">
@@ -80,11 +82,13 @@
                         <td>{{ inflow.quantity }}</td>
                         <td>{{ inflow.created_at|date:"d/m/Y H:i" }}</td>
                         <td>{{ inflow.updated_at|date:"d/m/Y H:i" }}</td>
-                        <td align="center">
-                            <a href="{% url 'inflow_detail' inflow.id %}" class="btn btn-info btn-sm">
-                                <i class="bi bi-eye"></i>
-                            </a>
-                        </td>
+                        {% if perms.inflows.view_inflow %}
+                            <td align="center">
+                                <a href="{% url 'inflow_detail' inflow.id %}" class="btn btn-info btn-sm">
+                                    <i class="bi bi-eye"></i>
+                                </a>
+                            </td>
+                        {% endif %}
                     </tr>
                 {% empty %}
                     <tr>

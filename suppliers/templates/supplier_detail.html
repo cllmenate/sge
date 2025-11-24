@@ -16,12 +16,16 @@
                 <p class="card-text"><strong>Criado em:</strong> {{ object.created_at }}</p>
                 <p class="card-text"><strong>Atualizado em:</strong> {{ object.updated_at }}</p>
                 <div class="card-footer">
-                    <a href="{% url 'supplier_update' object.id %}" class="btn btn-warning">
-                        <i class="bi bi-pencil"> </i> Editar
-                    </a>
-                    <a href="{% url 'supplier_delete' object.id %}" class="btn btn-danger">
-                        <i class="bi bi-trash"></i> Excluir
-                    </a>
+                    {% if perms.suppliers.change_supplier %}
+                        <a href="{% url 'supplier_update' object.id %}" class="btn btn-warning">
+                            <i class="bi bi-pencil"> </i> Editar
+                        </a>
+                    {% endif %}
+                    {% if perms.suppliers.delete_supplier %}
+                        <a href="{% url 'supplier_delete' object.id %}" class="btn btn-danger">
+                            <i class="bi bi-trash"></i> Excluir
+                        </a>
+                    {% endif %}
                     <a href="{% url 'supplier_list' %}" class="btn btn-secondary">
                         <i class="bi bi-arrow-left"></i> Voltar
                     </a>
