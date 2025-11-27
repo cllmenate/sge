@@ -27,4 +27,14 @@ urlpatterns = [
         views.ProductDeleteView.as_view(),
         name='product_delete'
     ),
+    path(
+        'api/v1/products/',
+        views.ProductListCreateAPIView.as_view(),
+        name='product_list_create_api_view'
+    ),
+    path(
+        'api/v1/products/<int:pk>/',
+        views.ProductRetrieveUpdateDestroyAPIView.as_view(),
+        name='product_detail_api_view'
+    ),
 ]

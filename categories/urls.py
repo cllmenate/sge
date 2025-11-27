@@ -27,4 +27,14 @@ urlpatterns = [
         views.CategoryDeleteView.as_view(),
         name='category_delete'
     ),
+    path(
+        'api/v1/categories/',
+        views.CategoryListCreateAPIView.as_view(),
+        name='category_list_create_api_view'
+    ),
+    path(
+        'api/v1/categories/<int:pk>/',
+        views.CategoryRetrieveUpdateDestroyAPIView.as_view(),
+        name='category_detail_api_view'
+    ),
 ]

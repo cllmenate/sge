@@ -1,3 +1,4 @@
+from rest_framework import generics
 from django.contrib.auth.mixins import (
     LoginRequiredMixin,
     PermissionRequiredMixin,
@@ -10,7 +11,7 @@ from django.views.generic import (
     DeleteView,
 )
 from django.urls import reverse_lazy
-from suppliers import models, forms
+from suppliers import models, forms, serializers
 
 
 # Create your views here.
@@ -78,3 +79,15 @@ class SupplierDeleteView(
     template_name = 'supplier_delete.html'
     success_url = reverse_lazy('supplier_list')
     permission_required = 'suppliers.delete_supplier'
+
+
+class SupplierListCreateAPIView(generics.ListCreateAPIView):
+    queryset = models.Supplier.objects.all()
+    serializer_class = serializers.SupplierSerializer
+
+
+class SupplierRetrieveUpdateDestroyAPIView(
+    generics.RetrieveUpdateDestroyAPIView
+):
+    queryset = models.Supplier.objects.all()
+    serializer_class = serializers.SupplierSerializer

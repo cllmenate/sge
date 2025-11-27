@@ -17,4 +17,14 @@ urlpatterns = [
         views.OutflowDetailView.as_view(),
         name='outflow_detail'
     ),
+    path(
+        'api/v1/outflows/',
+        views.OutflowListCreateAPIView.as_view(),
+        name='outflow_list_create_api_view'
+    ),
+    path(
+        'api/v1/outflows/<int:pk>/',
+        views.OutflowRetrieveAPIView.as_view(),
+        name='outflow_detail_api_view'
+    ),
 ]

@@ -99,7 +99,7 @@ def get_daily_sales_data():
     return dict(
         dates=dates,
         values=values,
-        )
+    )
 
 
 def get_daily_sales_quantity_data():

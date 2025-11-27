@@ -27,4 +27,14 @@ urlpatterns = [
         views.SupplierDeleteView.as_view(),
         name='supplier_delete'
     ),
+    path(
+        'api/v1/suppliers/',
+        views.SupplierListCreateAPIView.as_view(),
+        name='supplier_list_create_api_view'
+    ),
+    path(
+        'api/v1/suppliers/<int:pk>/',
+        views.SupplierRetrieveUpdateDestroyAPIView.as_view(),
+        name='supplier_detail_api_view'
+    ),
 ]
