@@ -1,0 +1,22 @@
+services:
+  sge_web:
+    build: .
+    ports:
+      - "8000:8000"
+    restart: always
+    depends_on:
+      - sge_db
+
+  sge_db:
+    image: postgres:17.7-bookworm
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/
+    environment:
+      - POSTGRES_DB=db_sge
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+
+volumes:
+  postgres_data:
